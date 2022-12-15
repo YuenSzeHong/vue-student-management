@@ -1,28 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <BNavbar sticky type="dark" variant="primary">
+      <BContainer>
+        <BNavbarBrand to="/">学生管理系统</BNavbarBrand>
+        <BNavbarNav>
+          <BNavItem to="/">学生列表</BNavItem>
+          <BNavItem to="/view">查询学生</BNavItem>
+          <BNavItem to="/new">新建学生</BNavItem>
+        </BNavbarNav>
+      </BContainer>
+    </BNavbar>
+    <BContainer>
+      <RouterView />
+    </BContainer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { BNavbar, BNavbarBrand, BNavItem, BContainer } from "bootstrap-vue";
+import { RouterView } from "vue-router";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    RouterView,
+    BNavbar,
+    BNavbarBrand,
+    // BNav,
+    BNavItem,
+    BContainer,
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
