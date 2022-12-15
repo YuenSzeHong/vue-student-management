@@ -1,32 +1,31 @@
 <template>
   <div>
     <h1>学生列表</h1>
-    <b-form>
-      <b-row> </b-row>
-      <b-col>
-        <b-row>
-          <b-input-group label="搜索" label-for="filter-input">
-            <b-form-input
+    <BForm>
+      <BCol>
+        <BRow>
+          <BInputGroup label="搜索" label-for="filter-input">
+            <BFormInput
               id="filter-input"
               v-model="filter"
               type="search"
               class="ma-2"
               placeholder="输入以搜索"
-            ></b-form-input>
-            <b-input-group-append>
-              <b-button
+            ></BFormInput>
+            <BInputGroupAppend>
+              <BButton
                 class="my-2"
                 :disabled="!filter"
                 @click="filter = ''"
                 variant="primary"
-                >Clear</b-button
+                >Clear</BButton
               >
-            </b-input-group-append>
-          </b-input-group>
-        </b-row>
-        <b-row>
-          <b-input-group label="每页显示" label-for="items-per-page">
-            <b-form-input
+            </BInputGroupAppend>
+          </BInputGroup>
+        </BRow>
+        <Brow>
+          <BInputGroup label="每页显示" label-for="items-per-page">
+            <BFormInput
               id="items-per-page"
               class="my-2"
               v-model.number="pagination.perPage"
@@ -34,21 +33,22 @@
               min="1"
               max="100"
             />
-            <b-input-group-append>
-              <b-button
+            <BInputGroupAppend>
+              <BButton
                 class="my-2"
                 :disabled="pagination.perPage != 20"
                 @click="pagination.perPage = 20"
                 variant="primary"
-                >Clear</b-button
+                >Clear</BButton
               >
-            </b-input-group-append>
-          </b-input-group>
-        </b-row>
-      </b-col>
-      <b-col>
-        <b-input-group label="搜索字段" label-for="filter-select">
-          <b-form-select
+            </BInputGroupAppend>
+          </BInputGroup>
+        </Brow>
+      </BCol>
+      <BCol>
+        <BInputGroup label="搜索字段" label-for="filter-select">
+          <BFormSelect
+            label
             id="filter-select"
             v-model="search"
             :options="fields"
@@ -56,19 +56,19 @@
             text-field="label"
             class="w-100 my-2"
             multiple
-          ></b-form-select>
-          <b-input-group-append>
-            <b-button
+          ></BFormSelect>
+          <BInputGroupAppend>
+            <BButton
               class="my-2"
               variant="primary"
               :disabled="!search.length"
               @click="search = []"
-              >Clear</b-button
+              >Clear</BButton
             >
-          </b-input-group-append>
-        </b-input-group>
-      </b-col>
-    </b-form>
+          </BInputGroupAppend>
+        </BInputGroup>
+      </BCol>
+    </BForm>
 
     <BTable
       :per-page="pagination.perPage"
@@ -81,44 +81,55 @@
       empty-text="没有记录"
       label-sort-asc="点击升序排序"
       label-sort-desc="点击降序排序"
+      label-sort-clear="点击清除排序"
       :stickyColumn="true"
       hover
       show-empty
       striped
     >
       <template #cell(actions)="row">
-        <b-button class="mx-2" variant="primary" @click="row.item.view()"
-          >检视</b-button
+        <BButton class="mx-2" variant="primary" @click="row.item.view()"
+          >检视</BButton
         >
-        <b-button class="mx-2" variant="info" @click="row.item.edit()"
-          >编辑</b-button
+        <BButton class="mx-2" variant="info" @click="row.item.edit()"
+          >编辑</BButton
         >
 
-        <b-button
+        <BButton
           class="mx-2"
           variant="danger"
           @click="row.item.delete(row.index)"
         >
           删除
-        </b-button>
+        </BButton>
       </template>
     </BTable>
-    <b-pagination
+    <BPagination
       v-model="pagination.currentPage"
       :total-rows="totalRows"
       :per-page="pagination.perPage"
-    ></b-pagination>
+    ></BPagination>
   </div>
 </template>
 
 
 
 <script>
-import { BTable } from "bootstrap-vue";
+import {
+  BButton,
+  BInputGroup,
+  BInputGroupAppend,
+  BPagination,
+  BTable,
+} from "bootstrap-vue";
 export default {
   name: "StudentList",
   components: {
     BTable,
+    BInputGroupAppend,
+    BInputGroup,
+    BButton,
+    BPagination,
   },
   created() {
     this.$watch(

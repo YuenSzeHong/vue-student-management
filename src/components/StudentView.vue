@@ -1,24 +1,20 @@
 <template>
   <div class="text-center">
     <h1>查询学生</h1>
-    <b-form @submit.prevent="search">
-      <b-input-group
-        class="my-5 mx-auto w-50"
-        label="学号"
-        label-for="id-input"
-      >
-        <b-form-input
+    <BForm @submit.prevent="search">
+      <BInputGroup class="my-5 mx-auto w-50" label="学号" label-for="id-input">
+        <BFormInput
           id="id-input"
           v-model="id"
           type="number"
           class="ma-2"
           placeholder="输入学号"
-        ></b-form-input>
-        <b-input-group-append>
+        ></BFormInput>
+        <BInputGroupAppend>
           <b-button class="m-2" variant="primary">确定</b-button>
-        </b-input-group-append>
-      </b-input-group>
-    </b-form>
+        </BInputGroupAppend>
+      </BInputGroup>
+    </BForm>
     <BTable
       class="my-5 mx-auto w-50"
       striped
@@ -33,13 +29,13 @@
 </template>
 
 <script>
-import {} from "bootstrap-vue";
+import { BInputGroup, BInputGroupAppend } from "bootstrap-vue";
 
 // get student list from store
 
 export default {
   name: "StudentEdit",
-  components: {},
+  components: { BInputGroupAppend, BInputGroup },
   data() {
     return {
       items: [],
