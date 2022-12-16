@@ -23,7 +23,7 @@
             </BInputGroupAppend>
           </BInputGroup>
         </BRow>
-        <Brow>
+        <BRow>
           <BInputGroup label="每页显示" label-for="items-per-page">
             <BFormInput
               id="items-per-page"
@@ -43,7 +43,7 @@
               >
             </BInputGroupAppend>
           </BInputGroup>
-        </Brow>
+        </BRow>
       </BCol>
       <BCol>
         <BInputGroup label="搜索字段" label-for="filter-select">
@@ -120,6 +120,7 @@ import {
   BInputGroupAppend,
   BPagination,
   BTable,
+  BRow,
 } from "bootstrap-vue";
 export default {
   name: "StudentList",
@@ -129,6 +130,7 @@ export default {
     BInputGroup,
     BButton,
     BPagination,
+    BRow,
   },
   created() {
     document.title = `${this.$route.name} - Vue学生管理系统`;

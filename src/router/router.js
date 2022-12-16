@@ -14,7 +14,7 @@ export default new VueRouter({
         { path: '/edit/:id', component: StudentEdit, name: '学生编辑' },
         { path: '/new', component: StudentAdd, name: '新建学生' },
         { path: '/view', component: StudentView, name: '查询学生' },
-        { path: '/view/:id', component: StudentView, name: '查询学生' },
+        { path: '/view/:id', component: StudentView, name: 'id查询学生' },
         { path: '*', redirect: '/' }
     ]
 })
