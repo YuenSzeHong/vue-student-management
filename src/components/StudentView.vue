@@ -54,6 +54,8 @@ export default {
     };
   },
   created() {
+    document.title = `${this.$route.name} - Vue学生管理系统`;
+
     this.$watch(
       () => this.$store.state.students,
       () => {

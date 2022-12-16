@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>学生列表</h1>
+    <h1 class="text-center">学生列表</h1>
     <BForm>
       <BCol>
         <BRow>
@@ -69,7 +69,6 @@
         </BInputGroup>
       </BCol>
     </BForm>
-
     <BTable
       :per-page="pagination.perPage"
       :current-page="pagination.currentPage"
@@ -132,6 +131,7 @@ export default {
     BPagination,
   },
   created() {
+    document.title = `${this.$route.name} - Vue学生管理系统`;
     this.$watch(
       () => this.$store.state.students,
       (students) => {

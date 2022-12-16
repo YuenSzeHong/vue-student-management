@@ -1,11 +1,19 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 
+let studentsJson = null
+
+try {
+    studentsJson = require('../../data/students.json')
+} catch (e) {
+    console.log('students.json not found')
+}
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        students: [
+        students: studentsJson ?? [
             //学生信息 {id:学号,name:姓名,sex:性别,age:年龄,phone:电话}
             // { id: 0, name: '周金凤', sex: '女', age: 21, phone: '13899328893' },
             { id: 1, name: '雷秀梅', sex: '男', age: 19, phone: '15279830336' },
@@ -23,8 +31,10 @@ export default new Vuex.Store({
             { id: 18, name: '李娟', sex: '女', age: 23, phone: '15920447394' },
             { id: 19, name: '陈明', sex: '女', age: 23, phone: '13039109660' },
             { id: 20, name: '王建军', sex: '女', age: 24, phone: '15766321520' },
-
-        ]
+            ...studentsJson
+        ].map((student, i) => {
+            return { ...student, id: i + 1 };
+        })
     },
     mutations: {
         //添加学生
@@ -39,7 +49,7 @@ export default new Vuex.Store({
         //修改学生
         editStudent(state, student) {
             state.students[student.id] = student
-        }
+        },
     },
     actions: {
         //添加学生

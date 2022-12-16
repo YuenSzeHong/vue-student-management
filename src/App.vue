@@ -2,7 +2,7 @@
   <div>
     <BNavbar sticky type="dark" variant="primary">
       <BContainer>
-        <BNavbarBrand to="/">学生管理系统</BNavbarBrand>
+        <BNavbarBrand to="/">Vue学生管理系统</BNavbarBrand>
         <BNavbarNav>
           <BNavItem to="/">学生列表</BNavItem>
           <BNavItem to="/view">查询学生</BNavItem>
@@ -30,6 +30,7 @@ export default {
     BNavItem,
     BContainer,
   },
+
 };
 </script>
 

@@ -1,14 +1,7 @@
 <template>
   <div>
-    <h1>学生编辑</h1>
-    <pre>
-        {{
-        $store.state.students.find(
-          (student) => student.id === $route.params.id
-        )
-      }}
-    </pre>
-    <BForm v-on:submit.prevent="addStudent">
+    <h1 class="text-center">学生编辑</h1>
+    <BForm v-on:submit.prevent="addStudent" class="my-5 mx-auto w-50">
       <BFormGroup label="姓名" label-for="name">
         <BFormInput
           v-model="student.name"
@@ -79,6 +72,9 @@ export default {
         sex: "",
       },
     };
+  },
+  created() {
+    document.title = `${this.$route.name} - Vue学生管理系统`;
   },
   mounted() {
     this.student = this.$store.state.students.filter(

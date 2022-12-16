@@ -60,6 +60,9 @@ export default {
       },
     };
   },
+  created() {
+    document.title = `${this.$route.name} - Vue学生管理系统`;
+  },
   methods: {
     addStudent() {
       this.$store.dispatch("addStudent", this.student);

@@ -1,4 +1,4 @@
-# Student management system
+# Vue Student management system
 
 [中文版](./README.zh-CN.md) | [English Version](./README.md)
 

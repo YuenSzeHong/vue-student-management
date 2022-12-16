@@ -10,11 +10,11 @@ Vue.use(VueRouter)
 export default new VueRouter({
     mode: 'history',
     routes: [
-        { path: '/', component: StudentList },
-        { path: '/edit/:id', component: StudentEdit },
-        { path: '/new', component: StudentAdd },
-        { path: '/view', component: StudentView },
-        { path: '/view/:id', component: StudentView },
+        { path: '/', component: StudentList, name: '学生列表' },
+        { path: '/edit/:id', component: StudentEdit, name: '学生编辑' },
+        { path: '/new', component: StudentAdd, name: '新建学生' },
+        { path: '/view', component: StudentView, name: '查询学生' },
+        { path: '/view/:id', component: StudentView, name: '查询学生' },
         { path: '*', redirect: '/' }
     ]
 })
